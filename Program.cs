@@ -13,7 +13,9 @@ builder.Services.AddControllers(
         //This is used when client request data in a unsuported format (Ex: requesting XML when endpoint only support JSON) through its accept headers. We return a 406 Not Acceptable response without returning data. Otherwise server returns data in the format server currently support ex: JSON  
         options.ReturnHttpNotAcceptable = true;
     }
-).AddXmlDataContractSerializerFormatters();
+).AddNewtonsoftJson()
+.AddXmlDataContractSerializerFormatters()
+;
 //Above line converts reponses to XML when requested by the client
 
 
