@@ -45,9 +45,13 @@ namespace CityInfo.Controllers
         [HttpPost]
         public ActionResult<PointOfInterestDTO> CreatePointOfInterest(
             int cityId,
-            [FromBody] PointOfInterestForCreationDTO pointOfInterest)
+            PointOfInterestForCreationDTO pointOfInterest)
             // we do not need to mention [FromBody] annotation with above variable
         {
+
+            
+
+
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
             if(city == null)
             {
