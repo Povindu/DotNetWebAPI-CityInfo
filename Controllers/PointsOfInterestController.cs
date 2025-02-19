@@ -84,9 +84,44 @@ namespace CityInfo.Controllers
             //Reponds with created file (finalPointOfInterest). Uses "GetPointOfInterest" API Endpoint as the value of location header
 
 
+        }
 
+
+        [HttpPut("{pointOfInterestid}")]
+        public ActionResult UpdatePointOfInterest(
+            int cityId, int pointOfInterestid, PointOfInterestForUpdateDTO pointOfInterest)
+        {
+            var tempCity = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+
+            if(tempCity == null)
+            {
+                return NotFound();
+            }
+
+            var tempPOI = tempCity.PointOfInterests.FirstOrDefault(p => p.Id == pointOfInterestid);
+
+            if(tempPOI == null)
+            {
+                return NotFound();
+            }
+
+            var finalPOI = new PointOfInterestForUpdateDTO()
+                {
+                Name = pointOfInterest.Name,
+                Description = pointOfInterest.Description,
+            };
+
+            tempPOI.Name = finalPOI.Name;
+            tempPOI.Description = finalPOI.Description;
+
+
+            return NoContent();
 
 
         }
+        
+    
+    
+    
     }
 }
