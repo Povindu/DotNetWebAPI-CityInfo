@@ -32,3 +32,5 @@ c:\Users\povindu.samarasekara\Projects\ASPDotNET Core WebAPI Course\CityInfo\obj
 c:\Users\povindu.samarasekara\Projects\ASPDotNET Core WebAPI Course\CityInfo\obj\Debug\net9.0\CityInfo.genruntimeconfig.cache
 c:\Users\povindu.samarasekara\Projects\ASPDotNET Core WebAPI Course\CityInfo\obj\Debug\net9.0\ref\CityInfo.dll
 C:\Users\povindu.samarasekara\Projects\ASPDotNET Core WebAPI Course\CityInfo\bin\Debug\net9.0\Scalar.AspNetCore.dll
+C:\Users\povindu.samarasekara\Projects\ASPDotNET Core WebAPI Course\CityInfo\obj\Debug\net9.0\CityInfo.sourcelink.json
+C:\Users\povindu.samarasekara\Projects\ASPDotNET Core WebAPI Course\CityInfo\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

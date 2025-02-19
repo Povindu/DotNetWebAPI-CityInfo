@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Options;
 using Scalar.AspNetCore;
 
@@ -5,8 +7,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(
+    options =>
+    {
+        //This is used when client request data in a unsuported format (Ex: requesting XML when endpoint only support JSON) through its accept headers. We return a 406 Not Acceptable response without returning data. Otherwise server returns data in the format server currently support ex: JSON  
+        options.ReturnHttpNotAcceptable = true;
+    }
+).AddXmlDataContractSerializerFormatters();
+//Above line converts reponses to XML when requested by the client
+
+
+//Integrate OpenAPI Endpoint
 builder.Services.AddOpenApi();
+
+
 
 
 
@@ -20,6 +34,10 @@ builder.Services.AddOpenApi();
 
 //     };
 // });
+
+
+
+
 
 var app = builder.Build();
 
