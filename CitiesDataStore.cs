@@ -17,7 +17,7 @@ public class CitiesDataStore
                 Id = 1,
                 Name = "New York",
                 Description = "wwqdqwdqwdqwd",
-                PointOfInterests = new List<PointOfInterestDTO>(){
+                PointsOfInterest = new List<PointOfInterestDTO>(){
                     new PointOfInterestDTO() {
                         Id = 1,
                         Name = "Central Park",
@@ -34,7 +34,7 @@ public class CitiesDataStore
                 Id = 2,
                 Name = "Matara",
                 Description = "wwqdqwdqwdqwd",
-                PointOfInterests = new List<PointOfInterestDTO>(){
+                PointsOfInterest = new List<PointOfInterestDTO>(){
                     new PointOfInterestDTO() {
                         Id = 1,
                         Name = "Central Park",
@@ -51,7 +51,7 @@ public class CitiesDataStore
                 Id = 3,
                 Name = "Galle",
                 Description = "wwqdqwdqwdqwd",
-                PointOfInterests = new List<PointOfInterestDTO>(){
+                PointsOfInterest = new List<PointOfInterestDTO>(){
                     new PointOfInterestDTO() {
                         Id = 1,
                         Name = "Central Park",

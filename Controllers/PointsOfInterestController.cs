@@ -11,6 +11,16 @@ namespace CityInfo.Controllers
     public class PointsOfInterestController : ControllerBase
     {
 
+        
+        // Logger
+        private readonly ILogger<PointsOfInterestController> _logger;
+        public PointsOfInterestController(ILogger<PointsOfInterestController> logger)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+
+
+
         [HttpGet]
         public ActionResult<IEnumerable<PointOfInterestDTO>> GetPointsOfInterst(int cityId)
         {
@@ -18,9 +28,10 @@ namespace CityInfo.Controllers
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
             if (city == null)
             {
+                _logger.LogInformation($"City with requested id {cityId} wasn't found");
                 return NotFound();
             }
-            return Ok(city.PointOfInterests);
+            return Ok(city.PointsOfInterest);
         }
 
 
@@ -35,7 +46,7 @@ namespace CityInfo.Controllers
                 return NotFound();
             }
 
-            var POI = city.PointOfInterests.FirstOrDefault(p => p.Id == POIId);
+            var POI = city.PointsOfInterest.FirstOrDefault(p => p.Id == POIId);
             if (POI == null)
             {
                 return NotFound();
@@ -62,7 +73,7 @@ namespace CityInfo.Controllers
                 return NotFound();
             }
 
-            var maxPointOfInterestId = CitiesDataStore.Current.Cities.SelectMany(c => c.PointOfInterests).Max(p => p.Id);
+            var maxPointOfInterestId = CitiesDataStore.Current.Cities.SelectMany(c => c.PointsOfInterest).Max(p => p.Id);
 
             var finalPointOfInterest = new PointOfInterestDTO()
             {
@@ -71,7 +82,7 @@ namespace CityInfo.Controllers
                 Description = pointOfInterest.Description
             };
 
-            city.PointOfInterests.Add(finalPointOfInterest);
+            city.PointsOfInterest.Add(finalPointOfInterest);
 
             //return CreatedAtRoute("GetPointOfInterest", new
             //{
@@ -104,7 +115,7 @@ namespace CityInfo.Controllers
                 return NotFound();
             }
 
-            var tempPOI = tempCity.PointOfInterests.FirstOrDefault(p => p.Id == pointOfInterestid);
+            var tempPOI = tempCity.PointsOfInterest.FirstOrDefault(p => p.Id == pointOfInterestid);
 
             if(tempPOI == null)
             {
@@ -137,7 +148,7 @@ namespace CityInfo.Controllers
                 return NotFound();
             }
 
-            var tempPOI = tempCity.PointOfInterests.FirstOrDefault(p => p.Id == pointOfInterestid);
+            var tempPOI = tempCity.PointsOfInterest.FirstOrDefault(p => p.Id == pointOfInterestid);
 
             if (tempPOI == null)
             {
@@ -179,14 +190,14 @@ namespace CityInfo.Controllers
                 return NotFound();
             }
 
-            var tempPOI = tempCity.PointOfInterests.FirstOrDefault(p => p.Id == pointOfInterestId);
+            var tempPOI = tempCity.PointsOfInterest.FirstOrDefault(p => p.Id == pointOfInterestId);
 
             if (tempPOI == null)
             {
                 return NotFound();
             }
 
-            tempCity.PointOfInterests.Remove(tempPOI);
+            tempCity.PointsOfInterest.Remove(tempPOI);
 
             return NoContent();
 
