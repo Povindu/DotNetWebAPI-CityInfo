@@ -13,11 +13,11 @@ namespace CityInfo.Controllers
 
         
         // Logger
-        private readonly ILogger<PointsOfInterestController> _logger;
-        public PointsOfInterestController(ILogger<PointsOfInterestController> logger)
-        {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        }
+        //private readonly ILogger<PointsOfInterestController> _logger;
+        //public PointsOfInterestController(ILogger<PointsOfInterestController> logger)
+        //{
+        //    _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        //}
 
 
 
@@ -28,7 +28,7 @@ namespace CityInfo.Controllers
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
             if (city == null)
             {
-                _logger.LogInformation($"City with requested id {cityId} wasn't found");
+                //_logger.LogInformation($"City with requested id {cityId} wasn't found");
                 return NotFound();
             }
             return Ok(city.PointsOfInterest);
