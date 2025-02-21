@@ -1,5 +1,6 @@
 ﻿using CityInfo.Entities;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 
 namespace CityInfo.DbContexts
 {
@@ -19,6 +20,52 @@ namespace CityInfo.DbContexts
         public CityInfoContext(DbContextOptions<CityInfoContext> options) : base(options)
         {
 
+        }
+
+
+        //Used to seed the database
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<City>()
+                .HasData(
+                new City("New York City")
+                {
+                    Id = 1,
+                    Description = "Thwfwefwefewf"
+                },
+                new City("Antwerp")
+                {
+                    Id = 2,
+                    Description = "wefwefw"
+                },
+                new City("Paris")
+                {
+                    Id = 3,
+                    Description = "ergregwgwg"
+                });
+
+            modelBuilder.Entity<PointOfInterest>()
+                .HasData(
+                new PointOfInterest("Park")
+                {
+                    Id = 1,
+                    CityId = 1,
+                    Description = "efwefwef"
+                },
+                new PointOfInterest("State")
+                {
+                    Id = 2,
+                    CityId = 1,
+                    Description = "wefwefwef"
+                },
+                new PointOfInterest("Cathedral")
+                {
+                    Id = 3,
+                    CityId = 2,
+                    Description = "Cathewfwefwefwe"
+                });
+
+            base.OnModelCreating(modelBuilder);
         }
 
 
