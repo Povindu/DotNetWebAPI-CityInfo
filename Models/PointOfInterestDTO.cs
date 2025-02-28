@@ -1,6 +1,6 @@
 using System;
 
-namespace CityInfo.models;
+namespace CityInfo.Models;
 
 public class PointOfInterestDTO
 {

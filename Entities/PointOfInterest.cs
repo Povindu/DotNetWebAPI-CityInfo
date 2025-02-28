@@ -5,6 +5,8 @@ namespace CityInfo.Entities
 {
     public class PointOfInterest
     {
+
+
         [Key] // Assign Id as primary key
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -15,6 +17,7 @@ namespace CityInfo.Entities
         public string Name { get; set; }
 
 
+        [MaxLength(250)]
         public string? Description { get; set; }
 
 
@@ -24,9 +27,15 @@ namespace CityInfo.Entities
         public int CityId { get; set; }
 
 
+
+
+        //Constructor used for assigning name attribute
         public PointOfInterest(string name)
         {
             Name = name;
         }
+
+
+
     }
 }

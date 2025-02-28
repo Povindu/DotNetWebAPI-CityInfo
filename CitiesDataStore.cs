@@ -1,5 +1,5 @@
 using System;
-using CityInfo.models;
+using CityInfo.Models;
 
 namespace CityInfo;
 

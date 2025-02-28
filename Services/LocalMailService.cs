@@ -6,7 +6,6 @@
         private string _mailFrom = string.Empty;
 
 
-
         //get mailTo and mailFrom addresses from appsettings.json 
         public LocalMailService(IConfiguration configuration)
         {

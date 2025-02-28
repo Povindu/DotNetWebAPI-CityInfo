@@ -9,9 +9,6 @@ using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
-
 builder.Services.AddControllers(
     options =>
     {
@@ -33,11 +30,12 @@ builder.Services.AddTransient<IMailService, CloudMailService>();
 //Adds CitiesDataStore as a singleton (Therefore we don't need to define static current variable (See CitiesDataStore)
 builder.Services.AddSingleton<CitiesDataStore>();
 
+builder.Services.AddScoped<ICityInfoRepository, CityInfoRepository>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
-
-
-//Integrate CityInfoContext
+//Integrate CityInfoContext. Uses scoped lifetime
 builder.Services.AddDbContext<CityInfoContext>
     (dbContextOptions => 
         dbContextOptions.UseSqlite(

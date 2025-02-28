@@ -17,11 +17,14 @@ namespace CityInfo.DbContexts
         //}
 
 
-        public CityInfoContext(DbContextOptions<CityInfoContext> options) : base(options)
+        public CityInfoContext(DbContextOptions<CityInfoContext> options2) : base(options2)
         {
 
         }
 
+
+
+          
 
         //Used to seed the database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
