@@ -8,13 +8,20 @@ namespace CityInfo.Services
     public class CityInfoRepository : ICityInfoRepository
     {
 
-        private readonly CityInfoContext _context;
+      
 
+        //Repository acts as an intermediary between the application and the database, abstracting the data access logic
+        
+        
+        //Constructor dependency injection of context
+        private readonly CityInfoContext _context;
         public CityInfoRepository(CityInfoContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             // In here "?? throw new ArgumentNullException(nameof(context)) is used for only null checking the context
             // Otherwise just using _context = context will work
+
+            // The "??" known as null-coalescing operator, executes the righthand side operation only if left hand side is null
 
         }
 

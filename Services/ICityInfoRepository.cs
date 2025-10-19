@@ -5,6 +5,9 @@ namespace CityInfo.Services
     public interface ICityInfoRepository
     {
 
+        //This Repository Interface is used to define the signatures of the methods to that deal with database 
+
+
         // Task< > is used to make a method async, we can omit it when we don't want to make method async 
 
         // We can use IQueryable<> instead of IEnumerable<>.

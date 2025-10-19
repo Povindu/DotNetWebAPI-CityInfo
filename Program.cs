@@ -2,7 +2,6 @@ using System.Runtime.InteropServices;
 using CityInfo;
 using CityInfo.DbContexts;
 using CityInfo.Services;
-using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Scalar.AspNetCore;
@@ -19,16 +18,17 @@ builder.Services.AddControllers(
 //Above line converts responses to XML when requested by the client
 
 
-//BY changing between debug and release modes in IDE we can define different mail services accordingly
+//By changing between debug and release modes in IDE we can define different mail services accordingly
 #if DEBUG
-builder.Services.AddTransient<IMailService, LocalMailService>();
+    builder.Services.AddTransient<IMailService, LocalMailService>();
 #else
-builder.Services.AddTransient<IMailService, CloudMailService>();
+    builder.Services.AddTransient<IMailService, CloudMailService>();
 #endif
 
 
-//Adds CitiesDataStore as a singleton (Therefore we don't need to define static current variable (See CitiesDataStore)
-builder.Services.AddSingleton<CitiesDataStore>();
+//Adds CitiesDataStore as a singleton (Therefore we don't need to define static current variable (See CitiesDataStore))
+//We used  in memory database CitiesDataStore only as a temporary database during learning. Now we have swtiched to SQL database with EntityFramework
+//builder.Services.AddSingleton<CitiesDataStore>();
 
 builder.Services.AddScoped<ICityInfoRepository, CityInfoRepository>();
 

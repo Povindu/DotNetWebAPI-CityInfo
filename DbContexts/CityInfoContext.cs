@@ -10,13 +10,15 @@ namespace CityInfo.DbContexts
 
         public DbSet<PointOfInterest> PointsOfInterest { get; set; }
 
+        //Connect to DB 
+        //Method 1: Add sqlite using a connection string
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    optionsBuilder.UseSqlite("connectionstring");
         //    base.OnConfiguring(optionsBuilder);
         //}
 
-
+        // Method 2: uisng consructor injection. we inject nessasary data from program.cs class when registering service
         public CityInfoContext(DbContextOptions<CityInfoContext> options2) : base(options2)
         {
 
@@ -26,7 +28,7 @@ namespace CityInfo.DbContexts
 
           
 
-        //Used to seed the database
+        //Use to seed the database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<City>()
